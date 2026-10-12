@@ -1,0 +1,134 @@
+{
+  "scan_id": "room-0a3f",
+  "name": "ワンルーム 内装改修（形式の見本）",
+  "estimate": {
+    "number": "2026-1013-001",
+    "revision": 1,
+    "issued": "2026-10-13",
+    "valid_days": 14,
+    "client": "見本 太郎",
+    "subject": "ワンルーム 内装改修工事 お見積書（形式の見本）",
+    "discount": {
+      "name": "端数お値引き",
+      "target": 2170000,
+      "basis": "税込"
+    }
+  },
+  "items": [
+    {
+      "code": "CL-0100",
+      "qty": 62.4,
+      "note": "壁・天井 既存クロス"
+    },
+    {
+      "code": "WC-1000",
+      "qty": 48.6,
+      "note": "壁。開口部 3 箇所を差し引き済み"
+    },
+    {
+      "code": "WC-2000",
+      "qty": 13.8,
+      "note": "天井"
+    },
+    {
+      "code": "FL-2000",
+      "qty": 19.4,
+      "note": "居室"
+    },
+    {
+      "code": "FL-3000",
+      "qty": 3.2,
+      "note": "洗面脱衣"
+    },
+    {
+      "code": "DR-0100",
+      "qty": 2
+    },
+    {
+      "code": "DR-0200",
+      "qty": 1,
+      "note": "居室・洋室間"
+    },
+    {
+      "code": "WD-0100",
+      "qty": 2
+    },
+    {
+      "code": "SW-0100",
+      "qty": 9
+    },
+    {
+      "code": "INS-0100",
+      "qty": 1
+    },
+    {
+      "code": "WST-0100",
+      "qty": 1
+    },
+    {
+      "code": "SOF-01",
+      "qty": 1,
+      "note": "置換アセット B071FMSY5S"
+    },
+    {
+      "code": "TBL-01",
+      "qty": 1,
+      "note": "置換アセット B072ZMHBKQ"
+    },
+    {
+      "code": "CHR-01",
+      "qty": 2,
+      "note": "置換アセット B071J7Q6KD"
+    },
+    {
+      "code": "CHR-02",
+      "qty": 2,
+      "note": "置換アセット B072Y6Y96S"
+    },
+    {
+      "code": "STG-01",
+      "qty": 1,
+      "note": "置換アセット B00NUS53CY"
+    },
+    {
+      "code": "STG-02",
+      "qty": 1,
+      "note": "置換アセット B01LYBQXRH"
+    },
+    {
+      "code": "RUG-01",
+      "qty": 1,
+      "note": "置換アセット B071777YL9"
+    },
+    {
+      "code": "LMP-01",
+      "qty": 1,
+      "note": "置換アセット B07374M818"
+    },
+    {
+      "code": "MIR-01",
+      "qty": 1,
+      "note": "置換アセット B0718ZKMW1"
+    },
+    {
+      "code": "CLT-01",
+      "qty": 1,
+      "note": "置換アセット B0719H3LG2"
+    },
+    {
+      "code": "CLT-02",
+      "qty": 1,
+      "note": "置換アセット B071F6WK9K"
+    },
+    {
+      "code": "PLT-01",
+      "qty": 1,
+      "note": "置換アセット B075HWDSFH"
+    },
+    {
+      "code": "DCR-01",
+      "qty": 2,
+      "note": "置換アセット B075HR7DM7"
+    }
+  ]
+}

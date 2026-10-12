@@ -1,0 +1,14 @@
+# 手元の単価表と経費表。価格も率も出どころと使用条件が物ごとに違うので持たない。
+# **ルート直下だけ**を無視する。examples/ の見本は生成物として git に入れる
+/prices.csv
+/trades.csv
+/markup.csv
+
+# 書き出した見積り
+/out/
+
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.DS_Store
