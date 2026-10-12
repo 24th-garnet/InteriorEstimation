@@ -15,7 +15,7 @@ import sys
 from decimal import Decimal
 from pathlib import Path
 
-from . import breakdown, ladder, markup, price, quantity, report
+from . import breakdown, ladder, markup, paper, price, quantity, report
 from .money import by_rate, to_yen
 from .price import TAXED
 
@@ -47,6 +47,8 @@ def _run(args: argparse.Namespace) -> int:
                          ensure_ascii=False, indent=2) + "\n"
     elif args.format == "csv":
         out = report.csv_text(est, quote=quote)
+    elif args.format == "html":
+        out = paper.html_sheet(est, quote=quote)
     else:
         out = report.text(est, quote=quote) + "\n"
 
@@ -177,7 +179,9 @@ def main(argv: list[str] | None = None) -> int:
 
     r = sub.add_parser("run", help="見積りを組む", parents=[common])
     r.add_argument("quantities", type=Path, help="数量リスト JSON")
-    r.add_argument("--format", choices=("text", "json", "csv"), default="text")
+    r.add_argument("--format", choices=("text", "json", "csv", "html"),
+                   default="text",
+                   help="html は客先に出せる見積書。ブラウザで開いて印刷・PDF 保存")
     r.add_argument("-o", "--out", type=Path, help="書き出し先。省略すると標準出力")
     r.add_argument("--strict", action="store_true",
                    help="単価の付かない行があれば失敗にする")

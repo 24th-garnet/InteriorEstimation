@@ -48,6 +48,28 @@ class Line:
 
 
 @dataclass(frozen=True)
+class Issuer:
+    """発行者。**宛先があるのに発行者が無い文書は見積書として成立しない。**
+
+    `registration` は適格請求書発行事業者の登録番号（`T` ＋ 13 桁）。見積書は
+    適格請求書ではないので必須ではないが、**後から請求書に起こすときに要る**ので
+    ここで持っておく。番号の検査はしない——形が変わる可能性のあるものを、
+    こちらが決め打ちで断るべきではない。
+    """
+
+    name: str = ""
+    address: str = ""
+    tel: str = ""
+    person: str = ""
+    #: 適格請求書発行事業者の登録番号
+    registration: str = ""
+
+    @property
+    def named(self) -> bool:
+        return bool(self.name)
+
+
+@dataclass(frozen=True)
 class Header:
     """見積書としての身分証明。
 
@@ -69,11 +91,18 @@ class Header:
     client: str = ""
     #: 件名
     subject: str = ""
+    #: 発行者
+    issuer: Issuer = Issuer()
 
     @property
     def identified(self) -> bool:
         """見積書として名乗れるか。"""
         return bool(self.number and self.issued)
+
+    @property
+    def deliverable(self) -> bool:
+        """客先に出せるか。**番号と発行日に加えて、発行者が要る。**"""
+        return self.identified and self.issuer.named
 
 
 #: 端数調整の基準
@@ -266,7 +295,25 @@ def _header(raw: object, reasons: list[str], where: str) -> Header:
 
     return Header(number, revision, issued, valid_until,
                   str(raw.get("client") or "").strip(),
-                  str(raw.get("subject") or "").strip())
+                  str(raw.get("subject") or "").strip(),
+                  _issuer(raw.get("issuer"), reasons, at))
+
+
+def _issuer(raw: object, reasons: list[str], at: str) -> Issuer:
+    """`estimate.issuer`。**省略できるが、書くなら社名が要る。**"""
+    if raw is None:
+        return Issuer()
+    if not isinstance(raw, dict):
+        reasons.append(f"{at}.issuer: 辞書ではない")
+        return Issuer()
+    name = str(raw.get("name") or "").strip()
+    if not name:
+        reasons.append(f"{at}.issuer: name が空。誰が出した見積りか分からない")
+    return Issuer(name,
+                  str(raw.get("address") or "").strip(),
+                  str(raw.get("tel") or "").strip(),
+                  str(raw.get("person") or "").strip(),
+                  str(raw.get("registration") or "").strip())
 
 
 def load(path: Path) -> Sheet:

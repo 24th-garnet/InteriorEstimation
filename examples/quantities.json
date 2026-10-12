@@ -8,6 +8,13 @@
     "valid_days": 14,
     "client": "見本 太郎",
     "subject": "ワンルーム 内装改修工事 お見積書（形式の見本）",
+    "issuer": {
+      "name": "見本内装 株式会社",
+      "address": "東京都千代田区（見本）1-2-3",
+      "tel": "03-0000-0000",
+      "person": "積算 花子",
+      "registration": "T0000000000000"
+    },
     "discount": {
       "name": "端数お値引き",
       "target": 2170000,
