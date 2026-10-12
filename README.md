@@ -1,4 +1,4 @@
-# InterierEstimation
+# InteriorEstimation
 
 数量と単価から**内装の見積り**を組む。1 スキャン分の数量リストを受け取り、
 工種ごとに材料費と施工費を積んで直接工事費まで出す。
